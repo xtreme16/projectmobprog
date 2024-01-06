@@ -50,7 +50,6 @@ public class DBUserHelper extends SQLiteOpenHelper {
 
         if(cursor.moveToFirst()){
             do{
-//                int id = cursor.getInt(0);
                 String nama = cursor.getString(0);
                 String email = cursor.getString(1);
                 String telpon = cursor.getString(2);
@@ -65,7 +64,7 @@ public class DBUserHelper extends SQLiteOpenHelper {
         return users;
     }
 
-    public boolean insert_user(User user){
+    public void insert_user(User user){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 //        cv.put("id", user.getId());
@@ -75,11 +74,5 @@ public class DBUserHelper extends SQLiteOpenHelper {
         cv.put(TABLE_USER_ALAMAT, user.getAlamat());
         cv.put(TABLE_USER_PASSWORD, user.getPassword());
         db.insert(TABLE_USER, null, cv);
-//
-//        String qInsert = "INSERT INTO " + TABLE_USER + "(nama, email, telpon, alamat, password) VALUES " + "("
-//                + user.getNama() + user.getEmail() + user.getTelpon() + user.getAlamat() + user.getPassword() + ")";
-//        db.execSQL(qInsert);
-
-        return true;
     }
 }

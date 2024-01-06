@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".ClickOrder"
+    android:paddingTop="100dp"
+    android:paddingHorizontal="50dp"
+    android:background="#FCD36B">
+
+    <LinearLayout
+        android:id="@+id/mohon_tunggu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintTop_toTopOf="parent">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Mohon Ditunggu Yaa!!!"
+            android:textSize="30sp"/>
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Makanan Sedang Diproses!"
+            android:textSize="25sp"/>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/track_pesanan"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="20dp"
+        android:text="Track Pesanan"
+        app:layout_constraintTop_toBottomOf="@id/mohon_tunggu"
+        app:layout_constraintLeft_toLeftOf="parent"
+        />
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/button_bg"
+        android:layout_marginTop="20dp"
+        android:text="Kembali"
+        app:layout_constraintTop_toBottomOf="@id/track_pesanan"
+        app:layout_constraintLeft_toLeftOf="parent"
+        android:onClick="onDashboard"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

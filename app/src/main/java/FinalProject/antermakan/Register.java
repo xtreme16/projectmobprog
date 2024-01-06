@@ -9,15 +9,25 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
+import com.google.firebase.Firebase;
+import com.google.firebase.FirebaseApp;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+
 import java.util.ArrayList;
 
 import FinalProject.antermakan.helper.DBUserHelper;
 import FinalProject.antermakan.models.User;
 
-public class Register extends AppCompatActivity implements View.OnClickListener {
+public class Register extends AppCompatActivity {
     private Button onregis;
-    private DBUserHelper DB = new DBUserHelper(this);
-    private ArrayList<User> users = new ArrayList<User>();
+//    private DBUserHelper DB = new DBUserHelper(this);
+//    private ArrayList<User> users = new ArrayList<User>();
+    private DatabaseReference database;
+    private FirebaseApp firebaseApp;
+    private FirebaseAuth mAuth;
+    private FirebaseDatabase firebaseDatabase;
     EditText ETnama, ETemail, ETtelpon, ETalamat, ETpassword;
 
     @Override
@@ -26,7 +36,6 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         setContentView(R.layout.activity_register);
 
         onregis = findViewById(R.id.regis_btn);
-        onregis.setOnClickListener(this);
 
         ETnama = findViewById(R.id.regis_name);
         ETemail = findViewById(R.id.regis_email);
@@ -34,33 +43,43 @@ public class Register extends AppCompatActivity implements View.OnClickListener 
         ETalamat = findViewById(R.id.regis_address);
         ETpassword = findViewById(R.id.regis_pass);
 
-        String nama = ETnama.getText().toString();
-        String email = ETemail.getText().toString();
-        String telpon = ETtelpon.getText().toString();
-        String alamat = ETalamat.getText().toString();
-        String password = ETpassword.getText().toString();
+        firebaseApp = FirebaseApp.initializeApp(this);
+        mAuth = FirebaseAuth.getInstance();
+        firebaseDatabase = FirebaseDatabase.getInstance("https://project-mobprog-35ac0-default-rtdb.asia-southeast1.firebasedatabase.app/");
+
+
+        onregis.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                String nama = ETnama.getText().toString();
+                String email = ETemail.getText().toString();
+                String telpon = ETtelpon.getText().toString();
+                String alamat = ETalamat.getText().toString();
+                String password = ETpassword.getText().toString();
+
+                if(nama.isEmpty() || email.isEmpty() || telpon.isEmpty() || alamat.isEmpty() || password.isEmpty()){
+                    Toast.makeText(Register.this, "Ada Data Yang Masih Kosong!!!", Toast.LENGTH_SHORT).show();
+                }else {
+                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Register.this, task -> {
+                        if (!task.isSuccessful()) {
+                            Toast.makeText(Register.this, "Register Failed, email already exits", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(Register.this, "Register Success", Toast.LENGTH_SHORT).show();
+                            database = firebaseDatabase.getReference().child("users").child(mAuth.getCurrentUser().getUid());
+                            database.setValue(new User(nama, email, telpon, alamat, password));
+                            Intent intent = new Intent(Register.this, Dashboard.class);
+                            startActivity(intent);
+                        }
+
+                    });
+                }
+            }
+        });
 
     }
 
     public void onLogin(View v){
         Intent intent = new Intent(this, Login.class);
-        startActivity(intent);
-    }
-
-    @Override
-    public void onClick(View v) {
-        DB.insert_user(new User("Christian", "daiwd", "djwaidhwa", "dhawdhwai", "dhawidhwa"));
-
-//        Toast.makeText(this, nama, Toast.LENGTH_LONG).show();
-
-        users = DB.get_users();
-
-        for (User u : users ) {
-            u.print();
-        }
-
-
-        Intent intent = new Intent(this, Dashboard.class);
         startActivity(intent);
     }
 }

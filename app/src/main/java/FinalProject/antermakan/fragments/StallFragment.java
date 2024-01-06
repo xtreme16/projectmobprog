@@ -33,7 +33,7 @@ public class StallFragment extends Fragment {
                 stall.add(new Stall("Stall " + i, "Ini Stall " + i, "Indonesian Food"));
             }
             else{
-                stall.add(new Stall("Stall " + i, "Ini Bukan Stall", "Chinese Food"));
+                stall.add(new Stall("Stall " + i, "Ini Stall " + i, "Chinese Food"));
             }
         }
 

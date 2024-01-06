@@ -5,7 +5,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:background="#FCD36B"
-    tools:context=".Login"
+    tools:context=".Register"
     android:weightSum="3">
 
     <LinearLayout
@@ -57,7 +57,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Email"
-            android:inputType="text"
+            android:inputType="textEmailAddress"
             android:background="@drawable/login_bg"
             android:paddingVertical="10dp"
             android:paddingHorizontal="15dp"
@@ -68,7 +68,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Nomor Telepon"
-            android:inputType="text"
+            android:inputType="phone"
             android:background="@drawable/login_bg"
             android:paddingVertical="10dp"
             android:paddingHorizontal="15dp"
@@ -90,7 +90,7 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:hint="Kata Sandi"
-            android:inputType="text"
+            android:inputType="textPassword"
             android:background="@drawable/login_bg"
             android:paddingVertical="10dp"
             android:paddingHorizontal="15dp"

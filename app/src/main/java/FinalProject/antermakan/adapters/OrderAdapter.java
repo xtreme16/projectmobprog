@@ -1,6 +1,7 @@
 package FinalProject.antermakan.adapters;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -11,6 +12,8 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.ArrayList;
 
+import FinalProject.antermakan.ClickMakanan;
+import FinalProject.antermakan.ClickOrder;
 import FinalProject.antermakan.R;
 import FinalProject.antermakan.models.Order;
 
@@ -49,7 +52,7 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         return orders.size();
     }
 
-    public class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
+    public class ViewHolder extends RecyclerView.ViewHolder{
 
         public TextView txtNama;
         public TextView txtList;
@@ -57,18 +60,14 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            itemView.setOnClickListener(this);
+            itemView.setOnClickListener(v1 -> {
+                Intent intent = new Intent(v1.getContext(), ClickOrder.class);
+                v1.getContext().startActivity(intent);
+            });
 
             txtNama = itemView.findViewById(R.id.txt_order_stall);
             txtList = itemView.findViewById(R.id.txt_list_order);
             txtTotal = itemView.findViewById(R.id.txt_total_harga);
-        }
-
-        @Override
-        public void onClick(View v) {
-//            int position = getLayoutPosition();
-//            makanans.remove(position);
-//            notifyDataSetChanged();
         }
     }
 }
