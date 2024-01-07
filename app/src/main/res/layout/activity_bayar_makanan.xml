@@ -11,7 +11,7 @@
         android:id="@+id/gambar_makan"
         android:layout_width="120dp"
         android:layout_height="120dp"
-        android:src="@drawable/makanan2"
+        android:src="@drawable/makanan"
         android:layout_marginTop="40dp"
         android:layout_marginLeft="40dp"
         app:layout_constraintTop_toTopOf="parent"
@@ -19,7 +19,7 @@
 
     <TextView
         android:id="@+id/bayar_nama"
-        android:layout_width="wrap_content"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:text="Nama Makanan"
         android:textStyle="bold"
@@ -30,7 +30,7 @@
 
     <TextView
         android:id="@+id/bayar_info"
-        android:layout_width="wrap_content"
+        android:layout_width="195dp"
         android:layout_height="wrap_content"
         android:text="Nama Makanan"
         android:layout_marginTop="6dp"

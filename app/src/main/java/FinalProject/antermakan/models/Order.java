@@ -4,11 +4,13 @@ public class Order {
     private String order_stall;
     private String order_list;
     private String total;
+    private String status;
 
-    public Order(String order_stall, String order_list, String total) {
+    public Order(String order_stall, String order_list, String total, String status) {
         this.order_stall = order_stall;
         this.order_list = order_list;
         this.total = total;
+        this.status = status;
     }
 
     public String getOrder_stall() {
@@ -33,5 +35,13 @@ public class Order {
 
     public void setTotal(String total) {
         this.total = total;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
     }
 }

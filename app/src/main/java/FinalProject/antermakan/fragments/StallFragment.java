@@ -27,15 +27,16 @@ public class StallFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_stall, container, false);
 
-        for(int i=1 ; i<=10; i++){
-            int status = (int)(Math.random()*2 + 1);   //1 atau 2
-            if( status == 1 ){
-                stall.add(new Stall("Stall " + i, "Ini Stall " + i, "Indonesian Food"));
-            }
-            else{
-                stall.add(new Stall("Stall " + i, "Ini Stall " + i, "Chinese Food"));
-            }
-        }
+        stall.add(new Stall("Selera Makan", "Restoran dengan sajian makanan rumahan yang murah dan enak", "Indonesian Food"));
+        stall.add(new Stall("Rumah Makan Jaya", "Rumah makan yang membuat anda merasakan sensasi masakan Ibu", "Indonesian Food"));
+        stall.add(new Stall("Warteg Bahari", "Warteg dengan sayur dan lauk lengkap", "Indonesian Food"));
+        stall.add(new Stall("Rembulan", "Restoran mewah tapi murah dengan suasana Rembulan", "Chinese Food"));
+        stall.add(new Stall("Mari Makan", "Rumah makan sederhana dengan rasa yang berbahaya", "Indonesian Food"));
+        stall.add(new Stall("Diner Dash", "Cafe murah tapi mewah dengan pelayanan terbaik", "Western Food"));
+        stall.add(new Stall("Ayam Cepat", "Fast Food dengan menu yang melimpah", "Western Food"));
+        stall.add(new Stall("KPC", "Kita Pried Chicken dengan rasa juara", "Western Food"));
+        stall.add(new Stall("Sendok Perak", "Restoran dengan konsep elegan dan classic", "Chinese Food"));
+        stall.add(new Stall("Cafe Sudut Jalan", "Cafe di sudut jalan dengan suasana nyaman dan tenang", "Indonesian Food"));
 
         rv_stalls = view.findViewById(R.id.rv_stall);
         stallAdapter = new StallAdapter(stall);

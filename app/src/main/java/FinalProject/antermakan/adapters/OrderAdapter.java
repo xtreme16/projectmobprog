@@ -41,10 +41,12 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         TextView txtNama = holder.txtNama;
         TextView txtList = holder.txtList;
         TextView txtTotal = holder.txtTotal;
+        TextView txtStatus = holder.txtStatus;
 
         txtNama.setText(order.getOrder_stall());
         txtList.setText(order.getOrder_list());
         txtTotal.setText(order.getTotal());
+        txtStatus.setText(order.getStatus());
     }
 
     @Override
@@ -57,17 +59,17 @@ public class OrderAdapter extends RecyclerView.Adapter<OrderAdapter.ViewHolder>{
         public TextView txtNama;
         public TextView txtList;
         public TextView txtTotal;
+        public TextView txtStatus;
 
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
             itemView.setOnClickListener(v1 -> {
-                Intent intent = new Intent(v1.getContext(), ClickOrder.class);
-                v1.getContext().startActivity(intent);
             });
 
             txtNama = itemView.findViewById(R.id.txt_order_stall);
             txtList = itemView.findViewById(R.id.txt_list_order);
             txtTotal = itemView.findViewById(R.id.txt_total_harga);
+            txtStatus = itemView.findViewById(R.id.txt_status_order);
         }
     }
 }

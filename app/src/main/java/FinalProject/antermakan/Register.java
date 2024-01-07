@@ -16,6 +16,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 import FinalProject.antermakan.helper.DBUserHelper;
 import FinalProject.antermakan.models.User;
@@ -60,18 +61,26 @@ public class Register extends AppCompatActivity {
                 if(nama.isEmpty() || email.isEmpty() || telpon.isEmpty() || alamat.isEmpty() || password.isEmpty()){
                     Toast.makeText(Register.this, "Ada Data Yang Masih Kosong!!!", Toast.LENGTH_SHORT).show();
                 }else {
-                    mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Register.this, task -> {
-                        if (!task.isSuccessful()) {
-                            Toast.makeText(Register.this, "Register Failed, email already exits", Toast.LENGTH_SHORT).show();
-                        } else {
-                            Toast.makeText(Register.this, "Register Success", Toast.LENGTH_SHORT).show();
-                            database = firebaseDatabase.getReference().child("users").child(mAuth.getCurrentUser().getUid());
-                            database.setValue(new User(nama, email, telpon, alamat, password));
-                            Intent intent = new Intent(Register.this, Dashboard.class);
-                            startActivity(intent);
-                        }
+                    if(nama.length() < 4){
+                        Toast.makeText(Register.this, "Nama harus lebih dari 3 karakter!", Toast.LENGTH_SHORT).show();
+                    }else if(!email.contains("@") || !email.endsWith(".com")){
+                        Toast.makeText(Register.this, "Email harus mengandung '@' dan diakhiri dengan '.com'", Toast.LENGTH_SHORT).show();
+                    } else if(password.length() < 7){
+                        Toast.makeText(Register.this, "Password harus lebih dari 6 karakter!", Toast.LENGTH_SHORT).show();
+                    }else {
+                        mAuth.createUserWithEmailAndPassword(email,password).addOnCompleteListener(Register.this, task -> {
+                            if (!task.isSuccessful()) {
+                                Toast.makeText(Register.this, "Register Gagal!", Toast.LENGTH_SHORT).show();
+                            } else {
+                                Toast.makeText(Register.this, "Register Berhasil!", Toast.LENGTH_SHORT).show();
+                                database = firebaseDatabase.getReference().child("users").child(mAuth.getCurrentUser().getUid());
+                                database.setValue(new User(nama, email, telpon, alamat, password));
+                                Intent intent = new Intent(Register.this, Dashboard.class);
+                                startActivity(intent);
+                            }
 
-                    });
+                        });
+                    }
                 }
             }
         });

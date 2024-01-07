@@ -1,0 +1,108 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#FCD36B"
+    tools:context=".UpdateData"
+    android:weightSum="3">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center"
+        android:layout_weight="0.8">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="70dp"
+            android:text="Update Data Anda!"
+            android:textSize="25dp"
+            android:textStyle="bold"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:layout_weight="1.4"
+        android:layout_marginHorizontal="25dp">
+
+        <EditText
+            android:id="@+id/update_nama"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nama"
+            android:inputType="text"
+            android:background="@drawable/login_bg"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/update_email"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Email"
+            android:inputType="textEmailAddress"
+            android:background="@drawable/login_bg"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/update_telp"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Nomor Telepon"
+            android:inputType="phone"
+            android:background="@drawable/login_bg"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/update_address"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Alamat Tempat Tinggal"
+            android:inputType="text"
+            android:background="@drawable/login_bg"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="15dp"/>
+
+        <EditText
+            android:id="@+id/update_pass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Kata Sandi"
+            android:inputType="textPassword"
+            android:background="@drawable/login_bg"
+            android:paddingVertical="10dp"
+            android:paddingHorizontal="15dp"
+            android:layout_marginBottom="15dp"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:orientation="vertical"
+        android:gravity="center_horizontal"
+        android:layout_weight="0.5">
+
+        <Button
+            android:id="@+id/update_btn"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@drawable/button_bg"
+            android:text="Update"/>
+
+    </LinearLayout>
+
+</LinearLayout>

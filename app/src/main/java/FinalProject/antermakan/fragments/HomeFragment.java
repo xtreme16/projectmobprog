@@ -29,15 +29,16 @@ public class HomeFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_home, container, false);
 
-        for(int i=1 ; i<=10; i++){
-            int status = (int)(Math.random()*2 + 1);   //1 atau 2
-            if( status == 1 ){
-                makanan.add(new Makanan("Nasi Goreng " + i, "Ini adalah Nasi Goreng"));
-            }
-            else{
-                makanan.add(new Makanan("Mie Goreng " + i, "Ini adalah Mie Goreng"));
-            }
-        }
+        makanan.add(new Makanan("Mie Goreng", "Hidangan mie yang dimasak dengan digoreng tumis"));
+        makanan.add(new Makanan("Nasi Goreng", "Nasi yang digoreng dengan kecap manis, bawang merah, bawang putih, telur, daging ayam, dan kerupuk."));
+        makanan.add(new Makanan("Sate Ayam", "Daging ayam yang dipanggang menggunakan arang dan disajikan dengan bumbu kacang atau bumbu kecap."));
+        makanan.add(new Makanan("Rendang", "Daging yang dimasak di suhu rendah dalam waktu lama dengan menggunakan aneka rempah-rempah dan santan."));
+        makanan.add(new Makanan("Ketoprak", "Bumbu kacang yang dipadukan dengan lontong, bihun, dan taoge."));
+        makanan.add(new Makanan("Sayur Asam", "Sayuran yang berisi labu siam, kacang panjang, jagung manis, kubis, melinjo, dan kacang tanah."));
+        makanan.add(new Makanan("Gado-Gado", "Makanan yang berisi sayur-sayuran, kentang, tempe, tahu, telur rebus dengan bumbu kacang."));
+        makanan.add(new Makanan("Ayam Goreng", "Ayam yang digoreng dalam minyak goreng."));
+        makanan.add(new Makanan("Gudeg", "Nangka muda yang dimasak dengan santan."));
+        makanan.add(new Makanan("Bakso Sapi", "Campuran daging sapi giling yang dicampur tepung tapioca dan dibentuk mirip bola-bola kecil"));
 
         rv_makanans = view.findViewById(R.id.rv_makanan);
         makananAdapter = new MakananAdapter(makanan);

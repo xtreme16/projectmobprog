@@ -1,5 +1,7 @@
 package FinalProject.antermakan.models;
 
+import android.widget.ImageView;
+
 public class Makanan {
     private String nama;
     private String info;
